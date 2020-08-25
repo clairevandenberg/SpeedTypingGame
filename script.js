@@ -8,7 +8,7 @@ const levels = {
 }
 
 //to change levels
-const currentLevel = levels.easy;
+const currentLevel = levels.hard;
 
 
 // Global Varibles
@@ -129,3 +129,10 @@ message.innerHTML = 'Game Over!!!';
 score = -1
 }
 }
+
+//event listeners
+easy.addEventListener("click", currentLevel.easy);
+
+medium.addEventListener("click", currentLevel.medium);
+
+hard.addEventListener("click", currentLevel.hard);
