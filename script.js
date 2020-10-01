@@ -1,4 +1,4 @@
-window.addEventListener('load', init);
+window.addEventListener('load', startGame);
 
 //Avaliable levels
 const levels = {
@@ -31,7 +31,7 @@ const levelHardBtn = document.querySelector('.hard-btn');
 const restart = document.querySelector(".restart")
 const beforeStart = document.querySelector(".beforeStart");
 const afterGame = document.querySelector(".afterGame");
-const startGame = document.querySelector(".startGame");
+const startBtn = document.querySelector(".startBtn");
 const playAgainBtn = document.querySelector(".playAgain");
 const duringGame = document.querySelector(".duringGame");
 
@@ -78,7 +78,7 @@ error: (xhr, status, error) => {
 }
 
 // Initialize Game
-function init() {
+function startGame() {
     // Show number of seconds in UI
     seconds.innerHTML = currentLevel;
     // Load word from array
@@ -93,6 +93,9 @@ function init() {
 
 //Start Match 
 function startMatch () {
+beforeStart.classList.add("hidden");
+duringGame.classList.remove("hidden");
+
 if (matchWords()) {
     console.log('MATCH!!!')
     isPlaying = true;
@@ -101,13 +104,13 @@ if (matchWords()) {
     wordInput.value = '';
     score++;
 }
+//start -1 second to give user time to start on 0
 if(score === -1) {
     scoreDisplay.innerHTML = 0;
 } else {
     scoreDisplay.innerHTML = score;
 }
-beforeStart.classList.add("hidden");
-afterGame.classList.add("hidden");
+
 
 }
 
@@ -148,22 +151,27 @@ if (!isPlaying && time === 0 ) {
 message.innerHTML = 'Game Over!!!';
 score = -1
 }
-duringGame.classList.remove("hidden");
-afterGame.classList.add("hidden");
+// //after Game
+duringGame.classList.add("hidden");
+// beforeStart.classList.remove("hidden");
 
 };
 
+// // attaching event listener to button 
+startBtn.addEventListener("click", (event) => {
+    startGame();
+});
+
 //restart game
-const playAgainBtn = (event) => {
-        afterGame.classList.modal("hidden");
+const playAgain = (event) => {
+        afterGame.classList.modal("hide");
         duringGame.classList.add("hidden")
         beforeStart.classList.remove("hidden");
 };
 
-
 //play easy 
 const levelEasy = (event) => {
-    startMatch
+    startGame
     currentLevel = levels.hard;
 }
 
@@ -175,13 +183,11 @@ const levelMedium = (event) => {
 
 
 //play hard 
-const levelHard = (event) => {
-    
+const levelHard = (event) => {  
 };
 
-// // event listeners to buttons
 
-// startGame.addEventListener("click", startGame);
+// startBtn.addEventListener("click", startGame);
 
 // levelEasyBtn.addEventListener("click", (event) => {
 //     init.currentLevel.levels.easy();

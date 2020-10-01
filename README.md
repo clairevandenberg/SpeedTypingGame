@@ -1,5 +1,5 @@
 # Speed Typing Game
-Following along simple speed typing add built with JavaScript with Traversy Media.
+Speeedy Word App that tests your spelling and typing skills. Change the speed level to test yourself! 
 
 ## Deployed Game
 [Speedy Typing Game](https://clairevandeneberg.github.io/SpeedTypingGame/)
