@@ -1,4 +1,4 @@
-# SpeedTypingGame
+# Speed Typing Game
 Following along simple speed typing add built with JavaScript with Traversy Media.
 
 ## Deployed Game
